@@ -40,4 +40,5 @@ nosetests.xml
 ~*
 
 .ropeproject/
+.~*
 
