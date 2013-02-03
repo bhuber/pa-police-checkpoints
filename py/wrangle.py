@@ -10,8 +10,8 @@ def make_address(row):
     cross = row['cross_street']
     #rel = row['relation']
     #dist = row['distance_offset']
-    town = row['Town']
-    burrough = row['borough']
+    town = row['town']
+    borough = row['borough']
     township = row['township']
     county = row['county']
     state = 'Pennsylvania'
@@ -33,7 +33,7 @@ def make_address(row):
     name = clean(name)
     cross = clean(cross)
     town = clean(town).replace('town', '').strip()
-    burrough = append(clean(burrough), 'burrough')
+    borough = append(clean(borough), 'borough')
     township = append(clean(township), 'township')
     county = append(clean(county), 'county')
 
@@ -53,7 +53,7 @@ def make_address(row):
     if result != '':
         result += ', '
 
-    st = town or burrough
+    st = town or borough
     lt = county or township
     if st:
         result += st + ', '
