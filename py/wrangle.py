@@ -1,8 +1,11 @@
 #!/usr/bin/python
 
 import pandas as pd
+import numpy as np
+import statsmodels
+import tables
+import scipy
 
-# filename = '2012_01_15_PaTrafficStops.csv'
 
 def make_address(row):
     num = row['street_number']
@@ -72,4 +75,13 @@ def add_address(df, col_name='std_address'):
         return row
 
     return df.apply(aa, axis=1)
+
+
+def scrub_csv(filename=None):
+    filename = filename or '../data/2013_01_30_PaTrafficStops.csv'
+    outfile = '../data/all_good.csv'
+    tdf = pd.read_csv('filename')
+    a = add_address(tdf)
+    va = a[a['std_address'] != '']
+    a.to_csv(outfile, index=False)
 
